@@ -1,0 +1,91 @@
+{
+  "title": "오른쪽 계단",
+  "type": "중첩 반복문",
+  "score": 7,
+  "heading": "중첩 반복문을 이용한 문제 해결 프로그램 작성하기",
+  "description": "오른쪽 아래로 쌓인 계단의 끝에는 행 번호, 계단 안쪽은 별표( * ), 나머지는 점( . )으로 채우는 프로그램을 조건에 맞게 작성하세요.",
+  "conditions": [
+    "사각형 크기: **5행×5열**",
+    {
+      "text": "**이중 for문**을 이용한 중첩 반복 구조 구현",
+      "items": [
+        "① 바깥쪽 for문은 **변수 row**를 이용하여 **1~5행** 반복",
+        "② 안쪽 for문은 **변수 col**을 이용하여 **1~5열** 반복"
+      ],
+      "hint": "`range(1, n)`은 n-1까지만 돌아요. 끝 숫자는 **행(열) 수 + 1**을 쓰세요. 안쪽 for문이 끝난 뒤, 바깥쪽 for문 안에서 `print()`를 한 번 호출하면 줄이 바뀝니다."
+    },
+    {
+      "text": "**if~elif~else문**을 이용한 계단 그리기",
+      "items": [
+        "① col이 6-row와 같으면 **row의 값** 출력",
+        "② col이 6-row보다 크면 별표 \"*\" 출력",
+        "③ 나머지는 점 \".\" 출력",
+        "④ end=\" \" 옵션을 이용하여 행이 바뀔 때만 줄바꿈"
+      ],
+      "hint": "1행에서는 6-1=5열, 2행에서는 4열…처럼 계단 끝이 한 칸씩 왼쪽으로 와요. 끝 칸에는 숫자 row를 따옴표 없이 출력하세요."
+    },
+    "**실행 결과와 동일하게 출력하세요.**"
+  ],
+  "result_title": "실행 결과",
+  "examples": [
+    {
+      "stdin": [],
+      "output": ". . . . 1 \n. . . 2 * \n. . 3 * * \n. 4 * * * \n5 * * * * \n"
+    }
+  ],
+  "tests": [
+    {
+      "stdin": [],
+      "output": ". . . . 1 \n. . . 2 * \n. . 3 * * \n. 4 * * * \n5 * * * * \n"
+    }
+  ],
+  "checks": [
+    {
+      "type": "nested_for",
+      "outer": "row",
+      "inner": "col",
+      "outer_range": [
+        1,
+        6
+      ],
+      "inner_range": [
+        1,
+        6
+      ],
+      "desc": "바깥쪽 for문은 변수 row로 1~5행, 안쪽 for문은 변수 col로 1~5열 반복"
+    },
+    {
+      "type": "if_elif_else",
+      "elif": 1,
+      "desc": "if~elif~else문을 이용한 계단 그리기",
+      "in_for": true
+    },
+    {
+      "type": "print_end",
+      "value": " ",
+      "desc": "end=\" \" 옵션을 이용하여 행이 바뀔 때만 줄바꿈"
+    },
+    {
+      "type": "loop_print",
+      "depth": 2,
+      "max_args": 1,
+      "desc": "모양은 안쪽 for문 안에서 한 칸씩 print로 출력"
+    },
+    {
+      "type": "max_str_len",
+      "max": 1,
+      "desc": "한 칸씩 출력 (모양을 문자열로 한 번에 출력하지 않기)"
+    }
+  ],
+  "solution": [
+    "for row in range(1, 6):",
+    "    for col in range(1, 6):",
+    "        if col == 6 - row:",
+    "            print(row, end=\" \")",
+    "        elif col > 6 - row:",
+    "            print(\"*\", end=\" \")",
+    "        else:",
+    "            print(\".\", end=\" \")",
+    "    print()"
+  ]
+}

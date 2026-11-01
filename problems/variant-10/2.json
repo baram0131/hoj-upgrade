@@ -1,0 +1,91 @@
+{
+  "title": "체크무늬",
+  "type": "중첩 반복문",
+  "score": 7,
+  "heading": "중첩 반복문을 이용한 문제 해결 프로그램 작성하기",
+  "description": "테두리는 \"#\", 안쪽은 별표( * )와 점( . )이 번갈아 나오는 체크무늬를 그리는 프로그램을 조건에 맞게 작성하세요.",
+  "conditions": [
+    "사각형 크기: **6행×6열**",
+    {
+      "text": "**이중 for문**을 이용한 중첩 반복 구조 구현",
+      "items": [
+        "① 바깥쪽 for문은 **변수 row**를 이용하여 **1~6행** 반복",
+        "② 안쪽 for문은 **변수 col**을 이용하여 **1~6열** 반복"
+      ],
+      "hint": "`range(1, 5)`는 1, 2, 3, 4까지만 돌아요. 끝 숫자는 포함되지 않으니 **행(열) 수 + 1**을 쓰세요. 안쪽 for문이 끝난 뒤, 바깥쪽 for문 안(들여쓰기 4칸)에서 `print()`를 한 번 호출하면 줄이 바뀝니다."
+    },
+    {
+      "text": "**if~elif~else문**을 이용한 체크무늬 그리기",
+      "items": [
+        "① row가 1이나 6이거나, col이 1이나 6이면 \"#\" 출력",
+        "② row와 col의 합이 짝수이면 별표 \"*\" 출력",
+        "③ 나머지는 점 \".\" 출력",
+        "④ end=\" \" 옵션을 이용하여 행이 바뀔 때만 줄바꿈"
+      ],
+      "hint": "테두리는 네 가지 경우라서 `row == 1 or row == 6 or col == 1 or col == 6`처럼 or로 묶습니다. 짝수인지는 2로 나눈 나머지로 확인해요: `(row + col) % 2 == 0`. 모든 칸에서 `end=\" \"`를 붙이세요."
+    },
+    "**실행 결과와 동일하게 출력하세요.**"
+  ],
+  "result_title": "실행 결과",
+  "examples": [
+    {
+      "stdin": [],
+      "output": "# # # # # # \n# * . * . # \n# . * . * # \n# * . * . # \n# . * . * # \n# # # # # # \n"
+    }
+  ],
+  "tests": [
+    {
+      "stdin": [],
+      "output": "# # # # # # \n# * . * . # \n# . * . * # \n# * . * . # \n# . * . * # \n# # # # # # \n"
+    }
+  ],
+  "checks": [
+    {
+      "type": "nested_for",
+      "outer": "row",
+      "inner": "col",
+      "outer_range": [
+        1,
+        7
+      ],
+      "inner_range": [
+        1,
+        7
+      ],
+      "desc": "바깥쪽 for문은 변수 row로 1~6행, 안쪽 for문은 변수 col로 1~6열 반복"
+    },
+    {
+      "type": "if_elif_else",
+      "elif": 1,
+      "in_for": true,
+      "desc": "if~elif~else문을 이용한 체크무늬 그리기"
+    },
+    {
+      "type": "print_end",
+      "value": " ",
+      "desc": "end=\" \" 옵션을 이용하여 행이 바뀔 때만 줄바꿈"
+    },
+    {
+      "type": "loop_print",
+      "depth": 2,
+      "max_args": 1,
+      "desc": "모양은 안쪽 for문 안에서 한 칸씩 print로 출력"
+    },
+    {
+      "type": "max_str_len",
+      "max": 1,
+      "desc": "한 칸씩 출력 (모양을 문자열로 한 번에 출력하지 않기)"
+    }
+  ],
+  "solution": [
+    "for row in range(1, 7):",
+    "    for col in range(1, 7):",
+    "        if row == 1 or row == 6 or col == 1 or col == 6:",
+    "            print(\"#\", end=\" \")",
+    "        elif (row + col) % 2 == 0:",
+    "            print(\"*\", end=\" \")",
+    "        else:",
+    "            print(\".\", end=\" \")",
+    "    print()"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "title": "큰 수 돌려주기",
+  "type": "함수",
+  "statement": "두 수 a, b를 받아 더 큰 수를 **돌려주는(return)** 함수 `bigger(a, b)`를 작성하세요.\n두 수가 같으면 그 수를 돌려줍니다.\n\n- `max()` 함수는 사용하지 마세요.\n- 함수만 작성하면 됩니다. 채점할 때 아래처럼 함수를 불러서 확인합니다.\n\n```\nprint(bigger(3, 5))\nprint(bigger(-2, -7))\n```",
+  "output": "위 코드를 실행하면 `5`, `-2`가 한 줄씩 출력되어야 한다.",
+  "starter": [
+    "def bigger(a, b):",
+    "    # 여기에 코드를 작성하세요",
+    "    pass"
+  ],
+  "examples": [],
+  "tests": [
+    {
+      "after": [
+        "print(bigger(3, 5))",
+        "print(bigger(-2, -7))"
+      ],
+      "output": "5\n-2\n"
+    },
+    {
+      "after": [
+        "print(bigger(10, 10))"
+      ],
+      "output": "10\n"
+    },
+    {
+      "after": [
+        "print(bigger(0, -1))",
+        "print(bigger(2.5, 2))"
+      ],
+      "output": "0\n2.5\n"
+    },
+    {
+      "after": [
+        "print(bigger(-100, 100))"
+      ],
+      "output": "100\n"
+    }
+  ],
+  "checks": [
+    {
+      "type": "def",
+      "name": "bigger",
+      "args": 2,
+      "returns": true,
+      "desc": "매개변수가 2개이고 값을 돌려주는 함수 bigger 정의"
+    },
+    {
+      "type": "forbid_call",
+      "name": "max",
+      "desc": "max() 함수 사용 금지"
+    }
+  ],
+  "solution": [
+    "def bigger(a, b):",
+    "    if a >= b:",
+    "        return a",
+    "    else:",
+    "        return b"
+  ]
+}

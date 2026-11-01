@@ -1,0 +1,91 @@
+{
+  "title": "테두리 X",
+  "type": "중첩 반복문",
+  "score": 7,
+  "heading": "중첩 반복문을 이용한 문제 해결 프로그램 작성하기",
+  "description": "테두리는 \"#\", 두 대각선은 별표( * ), 나머지는 공백으로 채우는 프로그램을 조건에 맞게 작성하세요.",
+  "conditions": [
+    "사각형 크기: **7행×7열**",
+    {
+      "text": "**이중 for문**을 이용한 중첩 반복 구조 구현",
+      "items": [
+        "① 바깥쪽 for문은 **변수 row**를 이용하여 **1~7행** 반복",
+        "② 안쪽 for문은 **변수 col**을 이용하여 **1~7열** 반복"
+      ],
+      "hint": "`range(1, n)`은 n-1까지만 돌아요. 끝 숫자는 **행(열) 수 + 1**을 쓰세요. 안쪽 for문이 끝난 뒤, 바깥쪽 for문 안에서 `print()`를 한 번 호출하면 줄이 바뀝니다."
+    },
+    {
+      "text": "**if~elif~else문**을 이용한 모양 그리기",
+      "items": [
+        "① row가 1이나 7이거나, col이 1이나 7이면 \"#\" 출력",
+        "② row와 col이 같거나, row와 col의 합이 8이면 별표 \"*\" 출력",
+        "③ 나머지는 공백 \" \" 출력",
+        "④ end=\" \" 옵션을 이용하여 행이 바뀔 때만 줄바꿈"
+      ],
+      "hint": "테두리 조건은 네 개를 `or`로 묶어요. 대각선은 `row == col`(왼쪽 위→오른쪽 아래)과 `row + col == 8`(오른쪽 위→왼쪽 아래)입니다. 모서리 칸은 테두리 조건을 먼저 확인하므로 \"#\"가 돼요."
+    },
+    "**실행 결과와 동일하게 출력하세요.**"
+  ],
+  "result_title": "실행 결과",
+  "examples": [
+    {
+      "stdin": [],
+      "output": "# # # # # # # \n# *       * # \n#   *   *   # \n#     *     # \n#   *   *   # \n# *       * # \n# # # # # # # \n"
+    }
+  ],
+  "tests": [
+    {
+      "stdin": [],
+      "output": "# # # # # # # \n# *       * # \n#   *   *   # \n#     *     # \n#   *   *   # \n# *       * # \n# # # # # # # \n"
+    }
+  ],
+  "checks": [
+    {
+      "type": "nested_for",
+      "outer": "row",
+      "inner": "col",
+      "outer_range": [
+        1,
+        8
+      ],
+      "inner_range": [
+        1,
+        8
+      ],
+      "desc": "바깥쪽 for문은 변수 row로 1~7행, 안쪽 for문은 변수 col로 1~7열 반복"
+    },
+    {
+      "type": "if_elif_else",
+      "elif": 1,
+      "desc": "if~elif~else문을 이용한 모양 그리기",
+      "in_for": true
+    },
+    {
+      "type": "print_end",
+      "value": " ",
+      "desc": "end=\" \" 옵션을 이용하여 행이 바뀔 때만 줄바꿈"
+    },
+    {
+      "type": "loop_print",
+      "depth": 2,
+      "max_args": 1,
+      "desc": "모양은 안쪽 for문 안에서 한 칸씩 print로 출력"
+    },
+    {
+      "type": "max_str_len",
+      "max": 1,
+      "desc": "한 칸씩 출력 (모양을 문자열로 한 번에 출력하지 않기)"
+    }
+  ],
+  "solution": [
+    "for row in range(1, 8):",
+    "    for col in range(1, 8):",
+    "        if row == 1 or row == 7 or col == 1 or col == 7:",
+    "            print(\"#\", end=\" \")",
+    "        elif row == col or row + col == 8:",
+    "            print(\"*\", end=\" \")",
+    "        else:",
+    "            print(\" \", end=\" \")",
+    "    print()"
+  ]
+}

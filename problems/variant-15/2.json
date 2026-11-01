@@ -1,0 +1,91 @@
+{
+  "title": "화살표",
+  "type": "중첩 반복문",
+  "score": 7,
+  "heading": "중첩 반복문을 이용한 문제 해결 프로그램 작성하기",
+  "description": "위쪽은 삼각형, 아래쪽은 기둥인 화살표를 별표( * )로 그리는 프로그램을 조건에 맞게 작성하세요.",
+  "conditions": [
+    "사각형 크기: **7행×5열**",
+    {
+      "text": "**이중 for문**을 이용한 중첩 반복 구조 구현",
+      "items": [
+        "① 바깥쪽 for문은 **변수 row**를 이용하여 **1~7행** 반복",
+        "② 안쪽 for문은 **변수 col**을 이용하여 **1~5열** 반복"
+      ],
+      "hint": "`range(1, n)`은 n-1까지만 돌아요. 끝 숫자는 **행(열) 수 + 1**을 쓰세요. 안쪽 for문이 끝난 뒤, 바깥쪽 for문 안에서 `print()`를 한 번 호출하면 줄이 바뀝니다."
+    },
+    {
+      "text": "**if~elif~else문**을 이용한 화살표 그리기",
+      "items": [
+        "① row가 3 이하이고, |col-3|이 row보다 작으면 별표 \"*\" 출력",
+        "② row가 3보다 크고, col이 3이면 별표 \"*\" 출력",
+        "③ 나머지는 공백 \" \" 출력",
+        "④ end=\" \" 옵션을 이용하여 행이 바뀔 때만 줄바꿈"
+      ],
+      "hint": "|col-3|은 `abs(col - 3)`, 가운데 열에서 몇 칸 떨어졌는지예요. 1행에서는 0칸(가운데만), 2행에서는 1칸까지, 3행에서는 2칸까지 별이 찍혀 삼각형이 됩니다. 두 조건을 함께 만족해야 하니 `and`로 묶으세요."
+    },
+    "**실행 결과와 동일하게 출력하세요.**"
+  ],
+  "result_title": "실행 결과",
+  "examples": [
+    {
+      "stdin": [],
+      "output": "    *     \n  * * *   \n* * * * * \n    *     \n    *     \n    *     \n    *     \n"
+    }
+  ],
+  "tests": [
+    {
+      "stdin": [],
+      "output": "    *     \n  * * *   \n* * * * * \n    *     \n    *     \n    *     \n    *     \n"
+    }
+  ],
+  "checks": [
+    {
+      "type": "nested_for",
+      "outer": "row",
+      "inner": "col",
+      "outer_range": [
+        1,
+        8
+      ],
+      "inner_range": [
+        1,
+        6
+      ],
+      "desc": "바깥쪽 for문은 변수 row로 1~7행, 안쪽 for문은 변수 col로 1~5열 반복"
+    },
+    {
+      "type": "if_elif_else",
+      "elif": 1,
+      "desc": "if~elif~else문을 이용한 화살표 그리기",
+      "in_for": true
+    },
+    {
+      "type": "print_end",
+      "value": " ",
+      "desc": "end=\" \" 옵션을 이용하여 행이 바뀔 때만 줄바꿈"
+    },
+    {
+      "type": "loop_print",
+      "depth": 2,
+      "max_args": 1,
+      "desc": "모양은 안쪽 for문 안에서 한 칸씩 print로 출력"
+    },
+    {
+      "type": "max_str_len",
+      "max": 1,
+      "desc": "한 칸씩 출력 (모양을 문자열로 한 번에 출력하지 않기)"
+    }
+  ],
+  "solution": [
+    "for row in range(1, 8):",
+    "    for col in range(1, 6):",
+    "        if row <= 3 and abs(col - 3) < row:",
+    "            print(\"*\", end=\" \")",
+    "        elif row > 3 and col == 3:",
+    "            print(\"*\", end=\" \")",
+    "        else:",
+    "            print(\" \", end=\" \")",
+    "    print()"
+  ]
+}
